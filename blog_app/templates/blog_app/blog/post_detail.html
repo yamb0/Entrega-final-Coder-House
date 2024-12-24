@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}{{ post.titulo }}{% endblock %}
+{% block content %}
+<h1>{{ post.titulo }}</h1>
+<img src="{{ post.imagen.url }}" alt="Imagen de la publicación">
+<p>{{ post.contenido }}</p>
+<p><em>Publicado el {{ post.fecha_creacion }}</em></p>
+{% if user == post.autor %}
+    <a href="{% url 'post_update' post.id %}">Editar</a>
+    <a href="{% url 'post_delete' post.id %}">Eliminar</a>
+{% endif %}
+{% endblock %}
